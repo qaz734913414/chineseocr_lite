@@ -47,7 +47,7 @@ class CRNNHandle():
                 net.load_state_dict(self.net)
 
             self.net = net
-            print('load models')
+            print('load model')
         self.net.eval()
 
 
@@ -67,6 +67,7 @@ class CRNNHandle():
         image = image.view(1, *image.size())
         image = Variable(image)
         preds = self.net(image)
+ 
         _, preds = preds.max(2)
 
         preds = preds.transpose(1, 0).contiguous().view(-1)
